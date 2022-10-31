@@ -1,10 +1,12 @@
 import request from 'supertest';
 import app from '../../app.js';
+import { loadPlanetsData } from '../../models/planets.model.js';
 import { mongoConnect, mongoDisconnect } from '../../services/mongo.js';
 
 describe('Launches API', () => {
     beforeAll(async () => {
         await mongoConnect();
+        await loadPlanetsData();
     });
 
     afterAll(async () => {
