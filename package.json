@@ -4,14 +4,14 @@
   "description": "Nasa Project root",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd server && yarn install",
-    "install-client": "cd client && yarn install",
-    "install": "yarn run install-server && yarn run install-client",
-    "server": "cd server && yarn run watch",
-    "client": "cd client && yarn run start",
-    "watch": "npm-run-all --parallel server client",
-    "deploy": "cd client && yarn run build && cd ../server && yarn run start",
-    "test": "cd server && yarn run test && cd ../client && yarn run test"
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "test": "npm test --prefix server && npm test --prefix client"
   },
   "author": "Jon Powell",
   "license": "MIT",
